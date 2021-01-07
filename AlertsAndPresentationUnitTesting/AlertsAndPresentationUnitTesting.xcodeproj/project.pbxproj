@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		0678E1E825A730EE0027A02A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678E1E725A730EE0027A02A /* main.swift */; };
 		0678E1F025A7329E0027A02A /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678E1EF25A7329E0027A02A /* UIViewController+Storyboard.swift */; };
 		0678E1F825A734DD0027A02A /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678E1F725A734DD0027A02A /* MainViewControllerTests.swift */; };
+		0678E1FC25A736830027A02A /* ViewControllerPresentationSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */; platformFilter = ios; };
+		0678E20025A736C60027A02A /* ViewControllerPresentationSpy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,19 @@
 			remoteInfo = AlertsAndPresentationUnitTesting;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0678E1FF25A736B60027A02A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				0678E20025A736C60027A02A /* ViewControllerPresentationSpy.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0678E1A325A72F950027A02A /* AlertsAndPresentationUnitTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlertsAndPresentationUnitTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +61,7 @@
 		0678E1E725A730EE0027A02A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0678E1EF25A7329E0027A02A /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		0678E1F725A734DD0027A02A /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
+		0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ViewControllerPresentationSpy.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0678E1FC25A736830027A02A /* ViewControllerPresentationSpy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +120,7 @@
 		0678E1BC25A72F970027A02A /* AlertsAndPresentationUnitTestingTests */ = {
 			isa = PBXGroup;
 			children = (
+				0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */,
 				0678E1BF25A72F970027A02A /* Info.plist */,
 				0678E1DD25A7300A0027A02A /* UnitTestingAppDelegate.swift */,
 				0678E1E125A7302B0027A02A /* UnitTestingSceneDelegate.swift */,
@@ -138,6 +156,7 @@
 				0678E1B525A72F970027A02A /* Sources */,
 				0678E1B625A72F970027A02A /* Frameworks */,
 				0678E1B725A72F970027A02A /* Resources */,
+				0678E1FF25A736B60027A02A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -417,6 +436,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AlertsAndPresentationUnitTestingTests",
+				);
 				INFOPLIST_FILE = AlertsAndPresentationUnitTestingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -438,6 +461,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AlertsAndPresentationUnitTestingTests",
+				);
 				INFOPLIST_FILE = AlertsAndPresentationUnitTestingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

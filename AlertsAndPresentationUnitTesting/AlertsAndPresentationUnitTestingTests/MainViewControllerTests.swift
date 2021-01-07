@@ -7,15 +7,18 @@
 
 import XCTest
 @testable import AlertsAndPresentationUnitTesting
+import ViewControllerPresentationSpy
 
 class MainViewControllerTests: XCTestCase {
+    
+    private var alertVerifier: AlertVerifier!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        alertVerifier = AlertVerifier()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        alertVerifier = nil
     }
 
     func testMainViewController_outletsConnectedCorrectly() throws {
@@ -27,7 +30,7 @@ class MainViewControllerTests: XCTestCase {
         XCTAssertNotNil(vc.showAlert2Button)
     }
     
-    func testMainViewController_button1_showsAlert1() throws {
+    func testMainViewController_button1_shouldShowAlert1() throws {
         let vc = MainViewController.fromStoryboard()
         vc.loadViewIfNeeded()
         
@@ -35,6 +38,29 @@ class MainViewControllerTests: XCTestCase {
         vc.showAlert1Button.tap()
         
         // then
+        alertVerifier.verify(title: "Alert 1",
+                             message: "Message 1",
+                             animated: true,
+                             actions: [.default("Action 1"), .default("Action 2")],
+                             preferredStyle: .alert,
+                             presentingViewController: vc)
+        
+    }
+    
+    func testMainViewController_button2_shouldShowAlert2() throws {
+        let vc = MainViewController.fromStoryboard()
+        vc.loadViewIfNeeded()
+        
+        // when
+        vc.showAlert2Button.tap()
+        
+        // then
+        alertVerifier.verify(title: "Alert 2",
+                             message: "Message 2",
+                             animated: true,
+                             actions: [.default("Action 1"), .default("Action 2")],
+                             preferredStyle: .alert,
+                             presentingViewController: vc)
         
     }
 
