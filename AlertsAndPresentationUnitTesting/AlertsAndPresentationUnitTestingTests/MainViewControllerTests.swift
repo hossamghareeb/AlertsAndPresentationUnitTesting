@@ -28,6 +28,7 @@ class MainViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(vc.showAlert1Button)
         XCTAssertNotNil(vc.showAlert2Button)
+        XCTAssertNotNil(vc.pushButton)
     }
     
     func testMainViewController_button1_shouldShowAlert1() throws {
@@ -62,6 +63,25 @@ class MainViewControllerTests: XCTestCase {
                              preferredStyle: .alert,
                              presentingViewController: vc)
         
+    }
+    
+    func testMainViewController_tappingPushButton_shouldPushSecondVC() {
+        let vc = MainViewController.fromStoryboard()
+        vc.loadViewIfNeeded()
+        let navVC = UINavigationController(rootViewController: vc)
+        
+        vc.pushButton.tap()
+        
+        // when you deal with animation, push, and present use this to force runloop to execute
+        // and push will take effect immediately
+        RunLoop.current.run(until: Date())
+        
+        // then
+        XCTAssertEqual(navVC.viewControllers.count, 2)
+        let lastVC = navVC.viewControllers.last
+        guard let _ = lastVC as? SecondViewController else {
+            return XCTFail("Expected SecondViewController but was \(String(describing: lastVC))")
+        }
     }
 
 }

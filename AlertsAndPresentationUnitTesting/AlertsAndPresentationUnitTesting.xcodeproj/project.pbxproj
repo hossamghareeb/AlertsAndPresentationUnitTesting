@@ -20,6 +20,8 @@
 		0678E1F825A734DD0027A02A /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678E1F725A734DD0027A02A /* MainViewControllerTests.swift */; };
 		0678E1FC25A736830027A02A /* ViewControllerPresentationSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */; platformFilter = ios; };
 		0678E20025A736C60027A02A /* ViewControllerPresentationSpy.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */; platformFilter = ios; };
+		0678E20525AA02010027A02A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0678E20425AA02010027A02A /* SecondViewController.swift */; };
+		0678E20B25AA020B0027A02A /* SecondViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0678E20A25AA020B0027A02A /* SecondViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		0678E1EF25A7329E0027A02A /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		0678E1F725A734DD0027A02A /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		0678E1FB25A736830027A02A /* ViewControllerPresentationSpy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ViewControllerPresentationSpy.framework; sourceTree = "<group>"; };
+		0678E20425AA02010027A02A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0678E20A25AA020B0027A02A /* SecondViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +108,9 @@
 		0678E1A525A72F950027A02A /* AlertsAndPresentationUnitTesting */ = {
 			isa = PBXGroup;
 			children = (
+				0678E20325AA01DA0027A02A /* ViewControllers */,
 				0678E1A625A72F950027A02A /* AppDelegate.swift */,
 				0678E1A825A72F950027A02A /* SceneDelegate.swift */,
-				0678E1AA25A72F950027A02A /* MainViewController.swift */,
-				0678E1AC25A72F950027A02A /* MainViewController.storyboard */,
 				0678E1EF25A7329E0027A02A /* UIViewController+Storyboard.swift */,
 				0678E1AF25A72F970027A02A /* Assets.xcassets */,
 				0678E1B125A72F970027A02A /* LaunchScreen.storyboard */,
@@ -127,6 +130,17 @@
 				0678E1F725A734DD0027A02A /* MainViewControllerTests.swift */,
 			);
 			path = AlertsAndPresentationUnitTestingTests;
+			sourceTree = "<group>";
+		};
+		0678E20325AA01DA0027A02A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0678E1AA25A72F950027A02A /* MainViewController.swift */,
+				0678E1AC25A72F950027A02A /* MainViewController.storyboard */,
+				0678E20425AA02010027A02A /* SecondViewController.swift */,
+				0678E20A25AA020B0027A02A /* SecondViewController.storyboard */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0678E1B325A72F970027A02A /* LaunchScreen.storyboard in Resources */,
+				0678E20B25AA020B0027A02A /* SecondViewController.storyboard in Resources */,
 				0678E1B025A72F970027A02A /* Assets.xcassets in Resources */,
 				0678E1AE25A72F950027A02A /* MainViewController.storyboard in Resources */,
 			);
@@ -230,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0678E20525AA02010027A02A /* SecondViewController.swift in Sources */,
 				0678E1AB25A72F950027A02A /* MainViewController.swift in Sources */,
 				0678E1A725A72F950027A02A /* AppDelegate.swift in Sources */,
 				0678E1E825A730EE0027A02A /* main.swift in Sources */,
