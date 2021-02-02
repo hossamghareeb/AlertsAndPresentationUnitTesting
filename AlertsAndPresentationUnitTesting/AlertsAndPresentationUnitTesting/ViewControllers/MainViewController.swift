@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet private(set) weak var showAlert1Button: UIButton!
     @IBOutlet private(set) weak var showAlert2Button: UIButton!
     @IBOutlet private(set) weak var pushButton: UIButton!
+    @IBOutlet private(set) weak var presentButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,9 @@ class MainViewController: UIViewController {
         let secondVC = SecondViewController.fromStoryboard()
         navigationController?.pushViewController(secondVC, animated: true)
     }
-    
+    @IBAction func didTapPresentButton(_ sender: Any) {
+        let secondVC = SecondViewController.fromStoryboard()
+        present(secondVC, animated: true)
+    }
 }
 

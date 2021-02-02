@@ -10,16 +10,6 @@ import XCTest
 import ViewControllerPresentationSpy
 
 class MainViewControllerTests: XCTestCase {
-    
-    private var alertVerifier: AlertVerifier!
-
-    override func setUpWithError() throws {
-        alertVerifier = AlertVerifier()
-    }
-
-    override func tearDownWithError() throws {
-        alertVerifier = nil
-    }
 
     func testMainViewController_outletsConnectedCorrectly() throws {
         
@@ -32,6 +22,7 @@ class MainViewControllerTests: XCTestCase {
     }
     
     func testMainViewController_button1_shouldShowAlert1() throws {
+        let alertVerifier = AlertVerifier()
         let vc = MainViewController.fromStoryboard()
         vc.loadViewIfNeeded()
         
@@ -49,6 +40,7 @@ class MainViewControllerTests: XCTestCase {
     }
     
     func testMainViewController_button2_shouldShowAlert2() throws {
+        let alertVerifier = AlertVerifier()
         let vc = MainViewController.fromStoryboard()
         vc.loadViewIfNeeded()
         
@@ -72,7 +64,7 @@ class MainViewControllerTests: XCTestCase {
         
         vc.pushButton.tap()
         
-        // when you deal with animation, push, and present use this to force runloop to execute
+        // when you deal with animation, push, and present, use this to force runloop to execute
         // and push will take effect immediately
         RunLoop.current.run(until: Date())
         
@@ -83,12 +75,53 @@ class MainViewControllerTests: XCTestCase {
             return XCTFail("Expected SecondViewController but was \(String(describing: lastVC))")
         }
     }
+    
+    func testMainViewController_tappingPushButton_shouldPushSecondVCWithAnimation() {
+        let vc = MainViewController.fromStoryboard()
+        vc.loadViewIfNeeded()
+        let navVC = SpyNavigationController(rootViewController: vc)
+        
+        vc.pushButton.tap()
+        
+        // when you deal with animation, push, and present, use this to force runloop to execute
+        // and push will take effect immediately
+        RunLoop.current.run(until: Date())
+        
+        // then
+        XCTAssertEqual(navVC.viewControllers.count, 2)
+        let lastVC = navVC.viewControllers.last
+        guard let _ = lastVC as? SecondViewController else {
+            return XCTFail("Expected SecondViewController but was \(String(describing: lastVC))")
+        }
+        
+        // test animated property
+        XCTAssertTrue(navVC.animatedFlags.last!)
+    }
 
+    func testMainViewController_tappingPresentButton_shouldPresentSecondVC() {
+        let verifier = PresentationVerifier()
+        let vc = MainViewController.fromStoryboard()
+        vc.loadViewIfNeeded()
+        
+        vc.presentButton.tap()
+        
+        let presentVC: SecondViewController? = verifier.verify(animated: true, presentingViewController: vc)
+        print(presentVC)
+    }
 }
 
 
 extension UIButton {
     func tap() {
         sendActions(for: .touchUpInside)
+    }
+}
+
+class SpyNavigationController: UINavigationController {
+    
+    var animatedFlags: [Bool] = []
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        animatedFlags.append(animated)
+        super.pushViewController(viewController, animated: animated)
     }
 }
